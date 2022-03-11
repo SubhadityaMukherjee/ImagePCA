@@ -31,11 +31,11 @@ def preprocess(im, *args, **kwargs):
     return out_im
 # %%
 main_dir = "/media/hdd/Datasets/Fish_Dataset/Fish_Dataset/" #folder path
-k = 100 # subset image count
+k = 5000 # subset image count
 type_im = "png" #image time
 image_size = 128 #px
 iters = 2000 # tsne iterations
-nclust = 12 # No of types you have. Approximately works too
+nclust = None # No of types you have. Approximately works too
 
 # %%
 all_files = glob.glob(str(Path(main_dir)/f"**/*.{type_im}"), recursive=True)

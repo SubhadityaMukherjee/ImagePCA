@@ -1,4 +1,5 @@
 
+from re import T
 import matplotlib.pyplot as plt
 
 import random
@@ -100,7 +101,11 @@ def plot_unsupervised(mnist_tr, features, image_size):
     for img, x, y in zip(features, tx, ty):
         # tile = Image.open(img)
         # print(img)
-        tile = Image.fromarray(img.reshape(image_size[0], image_size[1], 3))
+        try:
+            tile = Image.fromarray(img.reshape(image_size[0], image_size[1], 3))
+        except TypeError:
+            tile = Image.fromarray(img.reshape(image_size, image_size, 3))
+
         rs = max(1, tile.width/max_dim, tile.height/max_dim)
         tile = tile.resize(
             (int(tile.width/rs), int(tile.height/rs)), Image.ANTIALIAS)
